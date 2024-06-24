@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MovIes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca0c23a0d16bc092e510eee297198959f7ec7a69")]
 [assembly: System.Reflection.AssemblyProductAttribute("MovIes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MovIes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

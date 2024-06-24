@@ -99,6 +99,61 @@ namespace MovIes.Controllers
             return StatusCode(201);
         }
 
+        // PUT - Update single (api/Movies/5)
+        [HttpPut("api/movies/edit/{id}")]
+        public async Task<IActionResult> PutMovie(int id, Movie movie)
+        {
+            if (id != movie.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(movie).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MovieExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+
+        // DELETE Single
+        [HttpDelete("api/movies/remove/{id}")]
+        public async Task<IActionResult> DeleteMovie(int id)
+        {
+            if (_context.Movies == null)
+            {
+                return NotFound();
+            }
+
+            var movie = await _context.Movies.FindAsync(id);
+            if(movie == null)
+            {
+                return NotFound();
+            }
+
+           _context.Movies.Remove(movie);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
+        private bool MovieExists(long id) 
+        {
+            return (_context.Movies?.Any(x => x.Id == id)).GetValueOrDefault();
+        }
 
     }
 }
